@@ -5,6 +5,27 @@ const image = "https://speedtest.lucasbrum.net/img/5mb.jpg";
 const downloadSize = 4995374; //bytes
 let speed = 0;
 
+function convert(unit) {
+    if (speed > 0) {
+        let inkb, inmb;
+
+        switch(unit) {
+            case 'b':
+                status.innerHTML = `${speed}bps`;
+            break;
+            case 'k':
+                inkb = (speed / 1024).toFixed(2);
+                status.innerHTML = `${inkb}Kbps`;
+            break;
+            case 'm':
+                inkb = (speed / 1024).toFixed(2);
+                inmb = (inkb / 1024).toFixed(2);
+                status.innerHTML = `${inmb}Mbps`;
+            break;
+        }
+    }
+}
+
 function theme(val) {
     switch(true) {
         case (val < 5000000):
@@ -69,26 +90,5 @@ function MeasureConnectionSpeed() {
         status.innerHTML = `${mbps}Mbps`;
         theme(bps);
         speed = (downloadSize / duration).toFixed(2);
-    }
-}
-
-function convert(unit) {
-    if (speed > 0) {
-        let inkb, inmb;
-
-        switch(unit) {
-            case 'b':
-                status.innerHTML = `${speed}bps`;
-            break;
-            case 'k':
-                inkb = (speed / 1024).toFixed(2);
-                status.innerHTML = `${inkb}Kbps`;
-            break;
-            case 'm':
-                inkb = (speed / 1024).toFixed(2);
-                inmb = (inkb / 1024).toFixed(2);
-                status.innerHTML = `${inmb}Mbps`;
-            break;
-        }
     }
 }
