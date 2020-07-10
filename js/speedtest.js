@@ -63,7 +63,8 @@ function MeasureConnectionSpeed() {
         let bps = (bitsLoaded / duration).toFixed(2);
         let kbps = (bps / 1024).toFixed(2);
         let mbps = (kbps / 1024).toFixed(2);
-        status.innerHTML = `${mbps}Mbps<br />${kbps}KBps<br />${bps}Bps`;
+        //status.innerHTML = `${mbps}Mbps<br />${kbps}KBps<br />${bps}Bps`;
+        status.innerHTML = `${mbps}Mbps`;
         theme(bps);
     }
 }
