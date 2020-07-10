@@ -3,6 +3,7 @@ const icone = document.querySelector(".icone");
 const hero = document.querySelector(".hero");
 const image = "https://speedtest.lucasbrum.net/img/5mb.jpg";
 const downloadSize = 4995374; //bytes
+let speed = 0;
 
 function theme(val) {
     switch(true) {
@@ -67,5 +68,25 @@ function MeasureConnectionSpeed() {
         //status.innerHTML = `${mbps}Mbps<br />${kbps}KBps<br />${bps}Bps`;
         status.innerHTML = `${mbps}Mbps`;
         theme(bps);
+        speed = (downloadSize / duration).toFixed(2);
+    }
+}
+
+function convert(unit) {
+    if (speed > 0) {
+        switch(unit) {
+            case 'b':
+                status.innerHTML = `${speed}bps`;
+            break;
+            case 'k':
+                let inkb = (speed / 1024).toFixed(2);
+                status.innerHTML = `${inkb}Kbps`;
+            break;
+            case 'm':
+                let inkb = (speed / 1024).toFixed(2);
+                let inmb = (inkb / 1024).toFixed(2);
+                status.innerHTML = `${inmb}Mbps`;
+            break;
+        }
     }
 }
