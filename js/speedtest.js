@@ -7,7 +7,7 @@ let speed = 0;
 
 function convert(unit) {
     if (speed > 0) {
-        let inkb, inmb;
+        let inkb, inmb, bytespeed = speed * 8;
 
         switch(unit) {
             case 'b':
@@ -21,6 +21,18 @@ function convert(unit) {
                 inkb = (speed / 1024).toFixed(2);
                 inmb = (inkb / 1024).toFixed(2);
                 status.innerHTML = `${inmb}Mbps`;
+            break;
+            case 'B':
+                status.innerHTML = `${bytespeed}Bps`;
+            break;
+            case 'K':
+                inkb = (bytespeed / 1024).toFixed(2);
+                status.innerHTML = `${inkb}KBps`;
+            break;
+            case 'M':
+                inkb = (bytespeed / 1024).toFixed(2);
+                inmb = (inkb / 1024).toFixed(2);
+                status.innerHTML = `${inmb}MBps`;
             break;
         }
     }
