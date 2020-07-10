@@ -1,22 +1,22 @@
 const status = document.getElementById("status");
 const icone = document.querySelector(".icone");
 const hero = document.querySelector(".hero");
-const image = "https://speedtest.lucasbrum.net/img/5mb2.jpg";
+const image = "https://speedtest.lucasbrum.net/img/5mb.jpg";
 const downloadSize = 4995374; //bytes
 
 function theme(val) {
     switch(true) {
-        case (val < 10000):
+        case (val < 5000000):
             icone.src = 'img/emoji/pessima.svg';
             hero.classList.remove('is-info');
             hero.classList.add('is-danger');
         break;
-        case (val < 20000):
+        case (val < 10000000):
             icone.src = 'img/emoji/ruim.svg';
             hero.classList.remove('is-info');
             hero.classList.add('is-warning');
         break;
-        case (val < 30000):
+        case (val < 20000000):
             icone.src = 'img/emoji/boa.svg';
             hero.classList.remove('is-info');
             hero.classList.add('is-link');
@@ -42,6 +42,7 @@ if (window.addEventListener) {
 function MeasureConnectionSpeed() {
     let startTime, endTime;
     let download = new Image();
+
     download.onload = function () {
         endTime = (new Date()).getTime();
         showResults();
