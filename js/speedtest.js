@@ -29,6 +29,7 @@ function theme(val) {
 };
 
 function inicia() {
+    icone.src = 'img/emoji/pensativo.svg';
     status.innerHTML = "Carregando, aguarde por favor...";
     window.setTimeout(MeasureConnectionSpeed, 1);
 };
