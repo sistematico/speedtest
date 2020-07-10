@@ -1,63 +1,40 @@
-//JUST AN EXAMPLE, PLEASE USE YOUR OWN PICTURE!
-var imageAddr = "https://speedtest.lucasbrum.net/img/5mb.jpg";
-var downloadSize = 4995374; //bytes
+const status = document.getElementById("status");
+const image = "https://speedtest.lucasbrum.net/img/5mb.jpg";
+const downloadSize = 4995374; //bytes
 
-function ShowProgressMessage(msg) {
-    // if (console) {
-    //     if (typeof msg == "string") {
-    //         console.log(msg);
-    //     } else {
-    //         for (var i = 0; i < msg.length; i++) {
-    //             console.log(msg[i]);
-    //         }
-    //     }
-    // }
-
-    var status = document.getElementById("status");
-    if (status) {
-        var actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
-        status.innerHTML = actualHTML;
-    }
-}
-
-function InitiateSpeedDetection() {
-    ShowProgressMessage("Loading the image, please wait...");
+function inicia() {
+    status.innerHTML = "Carregando, aguarde por favor...";
     window.setTimeout(MeasureConnectionSpeed, 1);
 };
 
 if (window.addEventListener) {
-    window.addEventListener('load', InitiateSpeedDetection, false);
+    window.addEventListener('load', inicia, false);
 } else if (window.attachEvent) {
-    window.attachEvent('onload', InitiateSpeedDetection);
+    window.attachEvent('onload', inicia);
 }
 
 function MeasureConnectionSpeed() {
-    var startTime, endTime;
-    var download = new Image();
+    let startTime, endTime;
+    let download = new Image();
     download.onload = function () {
         endTime = (new Date()).getTime();
         showResults();
     }
 
     download.onerror = function (err, msg) {
-        ShowProgressMessage("Invalid image, or error downloading");
+        status.innerHTML = "Imagem inválida ou erro no download";
     }
 
     startTime = (new Date()).getTime();
-    var cacheBuster = "?nnn=" + startTime;
-    download.src = imageAddr + cacheBuster;
+    let cacheBuster = "?v=" + startTime;
+    download.src = image + cacheBuster;
 
     function showResults() {
-        var duration = (endTime - startTime) / 1000;
-        var bitsLoaded = downloadSize * 8;
-        var speedBps = (bitsLoaded / duration).toFixed(2);
-        var speedKbps = (speedBps / 1024).toFixed(2);
-        var speedMbps = (speedKbps / 1024).toFixed(2);
-        ShowProgressMessage([
-            "Your connection speed is:",
-            speedBps + " bps",
-            speedKbps + " kbps",
-            speedMbps + " Mbps"
-        ]);
+        let duration = (endTime - startTime) / 1000;
+        let bitsLoaded = downloadSize * 8;
+        let speedBps = (bitsLoaded / duration).toFixed(2);
+        let speedKbps = (speedBps / 1024).toFixed(2);
+        let speedMbps = (speedKbps / 1024).toFixed(2);
+        status.innerHTML = `Sua velocidade: ${speedMbps}mbps`;
     }
 }
