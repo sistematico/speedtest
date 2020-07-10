@@ -74,17 +74,19 @@ function MeasureConnectionSpeed() {
 
 function convert(unit) {
     if (speed > 0) {
+        let inkb, inmb;
+
         switch(unit) {
             case 'b':
                 status.innerHTML = `${speed}bps`;
             break;
             case 'k':
-                let inkb = (speed / 1024).toFixed(2);
+                inkb = (speed / 1024).toFixed(2);
                 status.innerHTML = `${inkb}Kbps`;
             break;
             case 'm':
-                let inkb = (speed / 1024).toFixed(2);
-                let inmb = (inkb / 1024).toFixed(2);
+                inkb = (speed / 1024).toFixed(2);
+                inmb = (inkb / 1024).toFixed(2);
                 status.innerHTML = `${inmb}Mbps`;
             break;
         }
