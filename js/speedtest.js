@@ -1,21 +1,30 @@
 const status = document.getElementById("status");
 const icone = document.querySelector(".icone");
+const hero = document.querySelector(".hero");
 const image = "https://speedtest.lucasbrum.net/img/5mb.jpg";
 const downloadSize = 4995374; //bytes
 
-function icon(val) {
+function theme(val) {
     switch(true) {
-        case (val < 1000):
+        case (val < 10000):
             icone.src = 'img/emoji/pessima.svg';
+            hero.classList.remove('is-info');
+            hero.classList.add('is-danger');
         break;
-        case (val < 2000):
+        case (val < 20000):
             icone.src = 'img/emoji/ruim.svg';
+            hero.classList.remove('is-info');
+            hero.classList.add('is-warning');
         break;
-        case (val < 3000):
+        case (val < 30000):
             icone.src = 'img/emoji/boa.svg';
+            hero.classList.remove('is-info');
+            hero.classList.add('is-link');
         break;
         default:
             icone.src = 'img/emoji/otima.svg';
+            hero.classList.remove('is-info');
+            hero.classList.add('is-success');
     }
 };
 
@@ -53,6 +62,6 @@ function MeasureConnectionSpeed() {
         let kbps = (bps / 1024).toFixed(2);
         let mbps = (kbps / 1024).toFixed(2);
         status.innerHTML = `Sua velocidade: ${mbps}Mbps`;
-        icon(bps);
+        theme(bps);
     }
 }
