@@ -1,22 +1,22 @@
 //JUST AN EXAMPLE, PLEASE USE YOUR OWN PICTURE!
-var imageAddr = "http://www.kenrockwell.com/contax/images/g2/examples/31120037-5mb.jpg";
+var imageAddr = "https://speedtest.lucasbrum.net/img/5mb.jpg";
 var downloadSize = 4995374; //bytes
 
 function ShowProgressMessage(msg) {
-    if (console) {
-        if (typeof msg == "string") {
-            console.log(msg);
-        } else {
-            for (var i = 0; i < msg.length; i++) {
-                console.log(msg[i]);
-            }
-        }
-    }
+    // if (console) {
+    //     if (typeof msg == "string") {
+    //         console.log(msg);
+    //     } else {
+    //         for (var i = 0; i < msg.length; i++) {
+    //             console.log(msg[i]);
+    //         }
+    //     }
+    // }
 
-    var oProgress = document.getElementById("progress");
-    if (oProgress) {
+    var status = document.getElementById("status");
+    if (status) {
         var actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
-        oProgress.innerHTML = actualHTML;
+        status.innerHTML = actualHTML;
     }
 }
 
