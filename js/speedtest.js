@@ -1,7 +1,7 @@
 const status = document.getElementById("status");
 const icone = document.querySelector(".icone");
 const hero = document.querySelector(".hero");
-const image = "https://speedtest.lucasbrum.net/img/5mb.jpg";
+const image = "https://speedtest.lucasbrum.net/img/5mb2.jpg";
 const downloadSize = 4995374; //bytes
 
 function theme(val) {
@@ -49,6 +49,7 @@ function MeasureConnectionSpeed() {
 
     download.onerror = function (err, msg) {
         status.innerHTML = "Imagem inválida ou erro no download";
+        theme(1);
     }
 
     startTime = (new Date()).getTime();
